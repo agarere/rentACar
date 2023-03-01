@@ -1,9 +1,9 @@
 package agarere.io.rentACar.dataAccess.abstracts;
 
 import agarere.io.rentACar.entities.concretes.Brand;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface BrandRepository {
-    List<Brand> getAll();
+@Repository
+public interface BrandRepository extends JpaRepository<Brand, Integer> {
 }
