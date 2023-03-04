@@ -7,20 +7,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name="brands")
+@Table(name="models")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Brand {
+public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "brand")
-    private List<Model> models;
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+    @OneToMany
+    private List<Car> cars;
 }
